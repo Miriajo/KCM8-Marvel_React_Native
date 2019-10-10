@@ -14,6 +14,9 @@ const mapDispatchToProps = (dispatch, props) => {
     fetchComicsList: () => {
       dispatch(comicsActions.fetchComicsList());
     },
+    updateItem: comic => {
+      dispatch(comicsActions.updateItem(comic));
+    },
   };
 };
 
