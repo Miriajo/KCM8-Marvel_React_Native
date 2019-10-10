@@ -6,26 +6,9 @@ import _ from 'lodash';
 import {ComicCell} from '../../molecules';
 
 class Comics extends Component {
-  state = {
-    comics: [],
-  };
-
   componentDidMount() {
-    this._loadComicsList();
+    this.props.fetchComicsList();
   }
-
-  _loadComicsList = async () => {
-    try {
-      const getComicsRes = await api.getComics();
-      const comics = _.get(getComicsRes, 'data.data.results', []);
-
-      this.props.setComicsList(comics);
-
-      dispatch(setComicsList(comics));
-    } catch (e) {
-      console.log('getComics err: ', e);
-    }
-  };
 
   _renderItem = ({item}) => (
     <ComicCell
@@ -35,16 +18,13 @@ class Comics extends Component {
   );
 
   render() {
-    console.log('this.state.comics: ', this.state.comics);
-
-    const comics = this.state.comics;
-
+    const {comicsList} = this.props;
     return (
       <SafeAreaView style={styles.container}>
         <FlatList
-          data={comics}
+          data={comicsList}
           renderItem={this._renderItem}
-          keyExtractor={(item, index) => `comic${index}`}
+          keyExtractor={(item, index) => `comic${item.id}`}
           numColumns={2}
         />
       </SafeAreaView>
