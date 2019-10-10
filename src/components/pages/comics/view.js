@@ -1,14 +1,9 @@
 import React, {Component} from 'react';
-import {
-  SafeAreaView,
-  Text,
-  TouchableOpacity,
-  Image,
-  FlatList,
-} from 'react-native';
+import {SafeAreaView, FlatList} from 'react-native';
 import styles from './styles';
 import * as api from '../../../api';
 import _ from 'lodash';
+import {ComicCell} from '../../molecules';
 
 class Comics extends Component {
   state = {
@@ -23,25 +18,21 @@ class Comics extends Component {
     try {
       const getComicsRes = await api.getComics();
       const comics = _.get(getComicsRes, 'data.data.results', []);
-      console.log('comics: ', comics);
-      this.setState({comics: comics});
+
+      this.props.setComicsList(comics);
+
+      dispatch(setComicsList(comics));
     } catch (e) {
       console.log('getComics err: ', e);
-    } finally {
     }
   };
 
-  _renderItem = ({item}) => {
-    const imagePath = _.get(item, 'thumbnail.path');
-    const imageExt = _.get(item, 'thumbnail.extension');
-    const imageDir = imagePath + '.' + imageExt;
-
-    return (
-      <TouchableOpacity style={{flex: 1}}>
-        <Image source={{uri: imageDir}} style={styles.imgComicBtn} />
-      </TouchableOpacity>
-    );
-  };
+  _renderItem = ({item}) => (
+    <ComicCell
+      comic={item}
+      onComicPress={comic => console.log('comic selected: ', comic)}
+    />
+  );
 
   render() {
     console.log('this.state.comics: ', this.state.comics);

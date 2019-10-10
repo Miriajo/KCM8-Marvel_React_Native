@@ -1,4 +1,4 @@
-import React, {Fragment, Component} from 'react';
+import React from 'react';
 import {StatusBar, YellowBox} from 'react-native';
 import Routes from '../routes';
 
