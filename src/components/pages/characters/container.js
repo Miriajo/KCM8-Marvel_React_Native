@@ -6,13 +6,18 @@ const mapStateToProps = state => {
   return {
     charactersList: state.characters.list,
     isFetching: state.characters.isFetching,
+    total: state.characters.total,
+    offset: state.characters.offset,
   };
 };
 
 const mapDispatchToProps = (dispatch, props) => {
   return {
-    fetchCharactersList: () =>
-      dispatch(charactersActions.fetchCharactersList()),
+    initCharactersList: () => dispatch(charactersActions.initCharactersList()),
+    updateCharactersListOffset: () =>
+      dispatch(charactersActions.updateCharactersListOffset()),
+    updateCharacter: character =>
+      dispatch(charactersActions.updateItem(character)),
   };
 };
 

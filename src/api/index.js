@@ -1,7 +1,7 @@
 import axios from 'axios';
 import {BASE_URL, BASE_URL_COMICS, BASE_URL_CHARS} from '../config/api';
 import {CREDENTIALS} from '../config/credentials';
-import qs from 'qs';
+//import qs from 'qs';
 
 export const instance = axios.create({
   baseURL: BASE_URL,

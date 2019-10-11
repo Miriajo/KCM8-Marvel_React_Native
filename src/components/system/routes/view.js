@@ -1,12 +1,6 @@
 import React from 'react';
 import {Router, Stack, Scene, Actions} from 'react-native-router-flux';
-import {
-  Home,
-  Comics,
-  ComicCharacters,
-  ComicCharacterAdd,
-  Characters,
-} from '../../pages';
+import {Home, Comics, Characters, CharacterAdd} from '../../pages';
 import {navBarStyles, navBarLogoStyles} from './styles';
 
 const Routes = () => (
@@ -21,15 +15,15 @@ const Routes = () => (
       />
       <Scene key="Comics" component={Comics} {...navBarStyles} />
       <Scene
-        key="ComicCharacters"
-        component={ComicCharacters}
+        key="Characters"
+        component={Characters}
         rightTitle={'Add'}
-        onRight={() => Actions.ComicCharacterAdd()}
+        onRight={() => Actions.CharacterAdd()}
         {...navBarStyles}
       />
       <Scene
-        key="ComicCharacterAdd"
-        component={ComicCharacterAdd}
+        key="CharacterAdd"
+        component={CharacterAdd}
         title={'Add Character'}
         {...navBarStyles}
       />

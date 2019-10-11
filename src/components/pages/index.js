@@ -1,7 +1,6 @@
 import Home from './home';
 import Characters from './characters';
 import Comics from './comics';
-import ComicCharacters from './comicChars';
-import ComicCharacterAdd from './comicChars-add';
+import CharacterAdd from './characters-add';
 
-export {Home, Characters, Comics, ComicCharacters, ComicCharacterAdd};
+export {Home, Characters, Comics, CharacterAdd};

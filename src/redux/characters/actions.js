@@ -34,24 +34,6 @@ export const updateOffset = value => {
   };
 };
 
-// INIT AND UPDATE CHARACTER LIST FILTERING BY COMIC
-export const initComicCharactersList = () => {
-  return async dispatch => {
-    dispatch(updateList([], 0));
-    dispatch(updateOffset(0));
-    dispatch(fetchComicCharactersList());
-  };
-};
-
-export const updateComicCharactersListOffset = () => {
-  return async (dispatch, getState) => {
-    const {offset} = getState().characters;
-    const newOffset = offset + LIMIT;
-    dispatch(updateOffset(newOffset));
-    dispatch(fetchComicCharactersList());
-  };
-};
-
 // INIT AND UPDATE FULL CHARACTER LIST
 export const initCharactersList = () => {
   return async dispatch => {
@@ -70,7 +52,7 @@ export const updateCharactersListOffset = () => {
   };
 };
 
-export const fetchComicCharactersList = () => {
+export const fetchCharactersList = () => {
   return async (dispatch, getState) => {
     const comic = getState().comics.item;
     if (!comic) {
@@ -95,7 +77,7 @@ export const fetchComicCharactersList = () => {
     }
   };
 };
-
+/*
 export const fetchCharactersList = () => {
   return async (dispatch, getState) => {
     try {
@@ -111,7 +93,7 @@ export const fetchCharactersList = () => {
       dispatch(setFetching(false));
     }
   };
-};
+};*/
 
 // POST CHARACTER MANUALY IN LOCAL DUE TO THIS API DOESN'T HAVE POST OPTIONS
 export const postCharacter = data => {

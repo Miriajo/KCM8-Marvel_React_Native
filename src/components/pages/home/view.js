@@ -16,8 +16,8 @@ class Home extends Component {
           />
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() =>
-            Actions.Characters({title: 'Characters', adios: 'adios'})
+          onPress={
+            () => {} //Actions.Characters({title: 'Characters', adios: 'adios'})
           }
           style={styles.btnCharacters}>
           <Image

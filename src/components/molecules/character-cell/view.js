@@ -12,7 +12,6 @@ const CharacterCell = ({character, onPress}) => {
   const imageExt = _.get(character, 'thumbnail.extension');
   const imageDir = imagePath + '.' + imageExt;
 
-  console.log('character: ', character);
   return (
     <TouchableOpacity onPress={onPress} style={styles.container}>
       <Image source={{uri: imageDir}} style={styles.image} />

@@ -12,7 +12,7 @@ class Comics extends React.Component {
 
   _onComicTapped = comic => {
     this.props.updateItem(comic);
-    Actions.ComicCharacters({title: _.get(comic, 'title', 'Characters')});
+    Actions.Characters({title: _.get(comic, 'title', 'Characters')});
   };
 
   _renderItem = ({item}) => (
