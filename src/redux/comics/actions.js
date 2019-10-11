@@ -38,3 +38,19 @@ export const fetchComicsList = () => {
     }
   };
 };
+
+export const fetchSeriesList = () => {
+  return async (dispatch, getState) => {
+    try {
+      dispatch(setFetching(true));
+      const getComicsRes = await api.getSeries();
+      const comics = _.get(getComicsRes, 'data.data.results', []);
+
+      dispatch(updateList(comics));
+    } catch (e) {
+      console.log('fetchComicsList err: ', e.message);
+    } finally {
+      dispatch(setFetching(false));
+    }
+  };
+};

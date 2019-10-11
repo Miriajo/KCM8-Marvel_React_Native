@@ -3,6 +3,7 @@ import {Router, Stack, Scene, Actions} from 'react-native-router-flux';
 import {
   Home,
   Comics,
+  Series,
   Characters,
   CharacterAdd,
   CharacterDetail,
@@ -20,6 +21,7 @@ const Routes = () => (
         {...navBarStyles}
       />
       <Scene key="Comics" component={Comics} {...navBarStyles} />
+      <Scene key="Series" component={Series} {...navBarStyles} />
       <Scene
         key="Characters"
         component={Characters}

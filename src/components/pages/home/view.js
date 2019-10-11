@@ -16,12 +16,10 @@ class Home extends Component {
           />
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={
-            () => {} //Actions.Characters({title: 'Characters', adios: 'adios'})
-          }
+          onPress={() => Actions.Series({title: 'Series', hola: 'hola'})}
           style={styles.btnCharacters}>
           <Image
-            source={require('../../../assests/images/Marvel-CHARS-BTN.png')}
+            source={require('../../../assests/images/Marvel-SERIES-BTN.png')}
             style={styles.btnImage}
           />
         </TouchableOpacity>

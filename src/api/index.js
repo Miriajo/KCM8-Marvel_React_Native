@@ -1,5 +1,10 @@
 import axios from 'axios';
-import {BASE_URL, BASE_URL_COMICS, BASE_URL_CHARS} from '../config/api';
+import {
+  BASE_URL,
+  BASE_URL_COMICS,
+  BASE_URL_SERIES,
+  BASE_URL_CHARS,
+} from '../config/api';
 import {CREDENTIALS} from '../config/credentials';
 //import qs from 'qs';
 
@@ -10,6 +15,11 @@ export const instance = axios.create({
 
 export const getComics = () => {
   const url = `${BASE_URL_COMICS}?${CREDENTIALS}`;
+  return instance.get(url);
+};
+
+export const getSeries = () => {
+  const url = `${BASE_URL_SERIES}?${CREDENTIALS}`;
   return instance.get(url);
 };
 
