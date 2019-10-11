@@ -14,13 +14,18 @@ import _ from 'lodash';
 import ImagePicker from 'react-native-image-picker';
 import {IMAGES_OPTIONS} from '../../../config/images';
 
-class CharacterAdd extends React.Component {
-  state = {
-    name: '',
-    description: '',
-    thumbnail: '',
-    image: '',
-  };
+class CharacterForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: _.get(props, 'character.name', ''),
+      description: _.get(props, 'character.description', ''),
+      thumbnail: _.get(props, 'character.thumbnail', ''),
+      image: _.has(props, 'character.image.data')
+        ? {uri: props.character.image.data}
+        : '',
+    };
+  }
 
   _onSubmit = () => {
     const {isFetching, comic} = this.props;
@@ -79,17 +84,21 @@ class CharacterAdd extends React.Component {
 
   render() {
     const {isFetching} = this.props;
-    const {name, description, image} = this.state;
+    const {name, description, thumbnail, image} = this.state;
+
+    var url = '';
+    if (thumbnail.path !== '') {
+      url = thumbnail.path + '.' + thumbnail.extension;
+    } else {
+      url = _.get(image, 'uri', '');
+    }
 
     return (
       <SafeAreaView style={styles.container}>
         <TouchableOpacity
           style={styles.imageInputContainer}
           onPress={this._onImageTapped}>
-          <Image
-            source={{uri: _.get(image, 'uri', '')}}
-            style={styles.imageInputPreview}
-          />
+          <Image source={{uri: url}} style={styles.imageInputPreview} />
           <View style={styles.imageInputButton}>
             <Text style={styles.imageInputLabel}>{'Choose image'}</Text>
           </View>
@@ -137,4 +146,4 @@ class CharacterAdd extends React.Component {
   }
 }
 
-export default CharacterAdd;
+export default CharacterForm;

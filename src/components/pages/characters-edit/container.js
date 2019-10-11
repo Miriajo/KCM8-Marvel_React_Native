@@ -5,6 +5,7 @@ import {CharacterForm} from '../../organisms';
 const mapStateToProps = state => {
   return {
     comic: state.comics.item,
+    character: state.characters.item,
     isFetching: state.characters.isFetching,
   };
 };

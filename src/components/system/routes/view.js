@@ -1,6 +1,12 @@
 import React from 'react';
 import {Router, Stack, Scene, Actions} from 'react-native-router-flux';
-import {Home, Comics, Characters, CharacterAdd} from '../../pages';
+import {
+  Home,
+  Comics,
+  Characters,
+  CharacterAdd,
+  CharacterDetail,
+} from '../../pages';
 import {navBarStyles, navBarLogoStyles} from './styles';
 
 const Routes = () => (
@@ -25,6 +31,12 @@ const Routes = () => (
         key="CharacterAdd"
         component={CharacterAdd}
         title={'Add Character'}
+        {...navBarStyles}
+      />
+      <Scene
+        key="CharacterDetail"
+        component={CharacterDetail}
+        title={'Character Detail'}
         {...navBarStyles}
       />
       <Scene key="Characters" component={Characters} {...navBarStyles} />

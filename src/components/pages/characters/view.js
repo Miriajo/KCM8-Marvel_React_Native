@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {SafeAreaView, FlatList, RefreshControl, Text, View} from 'react-native';
 import {CharacterCell} from '../../molecules';
 import styles from './styles';
-//import {Actions} from 'react-native-router-flux';
+import {Actions} from 'react-native-router-flux';
 import _ from 'lodash';
 
 class Characters extends Component {
@@ -14,7 +14,7 @@ class Characters extends Component {
   _onCharacterTapped = character => {
     this.props.updateCharacter(character);
     const title = _.get(character, 'name', 'Character');
-    //Actions.CharactersDetail({title});
+    Actions.CharacterDetail({title});
   };
 
   _renderItem = ({item}) => (

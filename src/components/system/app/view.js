@@ -11,7 +11,6 @@ class App extends React.Component {
     StatusBar.setBarStyle('light-content', false);
   }
   render() {
-    console.log('store: ', store);
     return (
       <Provider store={store}>
         <Routes />

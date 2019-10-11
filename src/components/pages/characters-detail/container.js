@@ -1,21 +1,19 @@
 import {connect} from 'react-redux';
-import {charactersActions} from '../../../redux/characters';
-import {CharacterForm} from '../../organisms';
+import View from './view';
+//import {charactersActions} from '../../../redux/characters';
 
 const mapStateToProps = state => {
   return {
-    comic: state.comics.item,
+    character: state.characters.item,
     isFetching: state.characters.isFetching,
   };
 };
 
 const mapDispatchToProps = (dispatch, props) => {
-  return {
-    postCharacter: data => dispatch(charactersActions.postCharacter(data)),
-  };
+  return {};
 };
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(CharacterForm);
+)(View);
