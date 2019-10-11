@@ -1,6 +1,6 @@
 import React from 'react';
 import {Router, Stack, Scene} from 'react-native-router-flux';
-import {Home, Characters, Comics} from '../../pages';
+import {Home, Comics, ComicCharacters, Characters} from '../../pages';
 import {navBarStyles, navBarLogoStyles} from './styles';
 
 const Routes = () => (
@@ -14,6 +14,11 @@ const Routes = () => (
         {...navBarStyles}
       />
       <Scene key="Comics" component={Comics} {...navBarStyles} />
+      <Scene
+        key="ComicCharacters"
+        component={ComicCharacters}
+        {...navBarStyles}
+      />
       <Scene key="Characters" component={Characters} {...navBarStyles} />
     </Stack>
   </Router>

@@ -9,6 +9,12 @@ export default StyleSheet.create({
     alignItems: 'center',
   },
   label: {
+    fontWeight: 'bold',
     color: colors.white,
+  },
+  subLabel: {
+    width: '60%',
+    color: colors.white,
+    textAlign: 'center',
   },
 });

@@ -32,7 +32,7 @@ export const fetchComicsList = () => {
 
       dispatch(updateList(comics));
     } catch (e) {
-      console.log('fetchComicsList err: ', e);
+      console.log('fetchComicsList err: ', e.message);
     } finally {
       dispatch(setFetching(false));
     }

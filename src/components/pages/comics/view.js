@@ -1,17 +1,18 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {SafeAreaView, FlatList, RefreshControl} from 'react-native';
 import styles from './styles';
 import {Actions} from 'react-native-router-flux';
 import {ComicCell} from '../../molecules';
+import _ from 'lodash';
 
-class Comics extends Component {
+class Comics extends React.Component {
   componentDidMount() {
     this.props.fetchComicsList();
   }
 
   _onComicTapped = comic => {
     this.props.updateItem(comic);
-    Actions.Characters();
+    Actions.ComicCharacters({title: _.get(comic, 'title', 'Characters')});
   };
 
   _renderItem = ({item}) => (
@@ -23,18 +24,19 @@ class Comics extends Component {
 
   render() {
     const {comicsList, isFetching} = this.props;
+
     return (
       <SafeAreaView style={styles.container}>
         <FlatList
           data={comicsList}
           renderItem={this._renderItem}
-          keyExtractor={(item, index) => `comic${item.id}`}
+          keyExtractor={item => `comic${item.id}`}
           numColumns={2}
           extraData={this.props}
           refreshControl={
             <RefreshControl
               refreshing={isFetching}
-              onRefresh={this.props.fetchComicsList()}
+              onRefresh={this.props.fetchComicsList}
               tintColor={'white'}
               colors={['white']}
             />
