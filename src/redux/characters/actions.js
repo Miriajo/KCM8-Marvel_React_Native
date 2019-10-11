@@ -112,3 +112,33 @@ export const fetchCharactersList = () => {
     }
   };
 };
+
+// POST CHARACTER MANUALY IN LOCAL DUE TO THIS API DOESN'T HAVE POST OPTIONS
+export const postCharacter = data => {
+  return (dispatch, getState) => {
+    const comic = getState().comics.item;
+    if (!comic) {
+      return;
+    }
+
+    try {
+      dispatch(setFetching(true));
+
+      const postCharacterRes = data;
+
+      // OPT 1:
+      const {total, list} = getState().characters;
+      const newTotal = total + 1;
+      const newList = [...list, postCharacterRes];
+      dispatch(updateList(newList, newTotal));
+
+      if (postCharacterRes) {
+        Actions.pop();
+      }
+    } catch (e) {
+      console.log('postCharacter error: ', e.message);
+    } finally {
+      dispatch(setFetching(false));
+    }
+  };
+};
